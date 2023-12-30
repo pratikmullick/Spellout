@@ -1,5 +1,4 @@
 # Spellout
----
 A simple program to spell out a numeric value, written in Python.
 Copyright 2023, Pratik Mullick. Some rights reserved.
 
