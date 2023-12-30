@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 '''
 Spellout program. This program spells out any integer number into words.
 Copyright 2023 Pratik Mullick.
@@ -5,7 +6,7 @@ Copyright 2023 Pratik Mullick.
 
 # Global variables
 uniques = ["zero","one","two","three","four","five","six","seven","eight",
-           "nine","ten","eleven","twelve","thirteen", "fifteen"]
+           "nine","ten","eleven","twelve","thirteen", "fifteen","eighteen"]
 
 base = ["twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"]
 
@@ -16,10 +17,12 @@ def base_wording(number):
     # Spells out the base, from 0 to 99.
     # Returns string output
     output = ""
-    if number < 13:                                         # If number < 13, select from uniques array
+    if number <= 13:                                        # If number <= 13, select from uniques array
         output = uniques[number]
     elif number == 15:                                      # Exception for 15
         output = uniques[14]
+    elif number == 18:                                      # Exception for 18, otherwise it becomes eightteen
+        output = uniques[15]
     elif number <= 19:                                      # If number is 14 or less than 19, add "teen" suffix
         digit = number % 10
         output = uniques[digit] + "teen"
