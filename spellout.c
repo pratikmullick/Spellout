@@ -47,7 +47,7 @@ char * base_wording(int number)
         tens = number / 10;
         strcpy(ten_w, base[tens - 2]);
         strcat(ten_w, " ");
-        strcat(output, ten_w);
+        strcpy(output, ten_w);
         if (number % 10 > 0)    {
             units = number % 10;
             strcat(output, uniques[units]);
@@ -87,12 +87,16 @@ char * huns_wording(int number)
 
 char * spellout(long long number, int i)
 {
-    int num, group;
+    int k, num, group;
     long long rem;
 
     char * mag_w = (char *) malloc(50 * sizeof(char));
     char * grp_w = (char *) malloc(50 * sizeof(char));
     char * output = (char *) malloc(200 * sizeof(char));
+
+    // Initialize all output chars as NULL
+    for (k = 0; k < 200; k++)
+        output[k] = '\0';
 
     while (i >= 0)  {
         if (number % (long long) (pow(10, i)) != number)   {
