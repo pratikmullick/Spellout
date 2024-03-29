@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 '''
-Spellout program. This program spells out any integer number into words.
-Copyright 2023 Pratik Mullick.
+Author: Pratik Mullick. Copyright 2023.
+Description: A program spelling out any integer number into words.
+Version: 1.0
+License: GNU General Public License v3.
 '''
 
 # Global variables
@@ -15,7 +17,7 @@ magnitude = ["hundred","thousand","million","billion","trillion"]
 
 def base_wording(number):
     # Spells out the base, from 0 to 99.
-    # Returns string output
+    # Returns a string as output
     output = ""
     if number <= 13:                                        # If number <= 13, select from uniques array
         output = uniques[number]
@@ -42,14 +44,14 @@ def huns_wording(number):
     output = ""
     huns = number // 100                                    # Split hundreds digit 
     if number % 100 == 0:                                   # If number is divisible by 100
-        output += (uniques[huns] + " hundred")              # Get uniques array value and the word the hundred.
+        output += (uniques[huns] + " hundred")              # Get uniques array value and the word "hundred".
     elif number > 100:                                      # For numbers greater than 100 and less than 999
         output += (uniques[huns] + " hundred and ")         # Get uniques array value and the phrase "hundred and"
-        rem = number % 100                                  # Make get the remaining after removing hundreds digit
+        rem = number % 100                                  # Get the remaining after removing hundreds digit
         if rem > 0:
-            output += base_wording(rem)                     # Run base_wording function using the remaining value
+            output += base_wording(rem)                     # Run base_wording function on the remaining value
     else:
-        output += base_wording(number)                      # For numbers less than 100, run base_wording.
+        output += base_wording(number)                      # For numbers less than 100, run base_wording on number.
 
     return output
 
@@ -59,7 +61,7 @@ def spellout(number, i=11):
     output = ""
     while i >= 0:                                           # Starting a loop from i (power) to 0.
         if number % (10 ** i) != number:                        # If the remainder of the number when divided by power of
-            num = 0                                             # 10 is not itself (if it is itself, then power is larger;
+            num = 0                                             # 10 is not itself (if it is itself, then power is larger);
             group = i // 3                                      # set group, (3 digits corresponding to each magnitude).
             num += (number // (10 ** i)) * (10 ** (i % 3))      # Get 3-digit pairs corresponding to magnitude, summed up.
             if i % 3 == 0:                                      # If i is at magnitude marker
