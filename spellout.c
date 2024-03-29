@@ -1,10 +1,18 @@
+/*
+ * Author: Pratik Mullick. Copyright 2024.
+ * Description: A program spelling out any integer number into words.
+ * Version: 1.0
+ * License: GNU General Public License v3.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 
-// CURRENT VERSION WITH MALLOC SHOULD HAVE MEMORY LEAKS?
+/* CURRENT VERSION WITH MALLOC SHOULD HAVE MEMORY LEAKS? */
 
+/* Default Values */
 #define MAG_MAX 11
 
 const char * uniques[] = {
@@ -20,12 +28,13 @@ const char * base[] = {
 
 const char * magnitude[] = {"hundred","thousand","million","billion","trillion"};
 
-// Function Prototypes
+/* Function Prototypes */
 char * base_wording(int number);
 char * huns_wording(int number);
 char * spellout(long long number, int i);
 
 char * base_wording(int number)
+/* Spells out the base, from 0 to 99 */
 {
     int digit, units, tens;
     char * teen = (char *) malloc(10 * sizeof(char));
@@ -60,6 +69,7 @@ char * base_wording(int number)
 }
 
 char * huns_wording(int number)
+/* Spells out between 0 to 999. Uses base_wording function */
 {
     char * hun_w = (char *) malloc(20 * sizeof(char));
     char * output = (char *) malloc(50 * sizeof(char));
@@ -86,6 +96,7 @@ char * huns_wording(int number)
 }
 
 char * spellout(long long number, int i)
+/* Spells out a number to its constituent words. Uses functions mentioned above */
 {
     int k, num, group;
     long long rem;
@@ -94,7 +105,7 @@ char * spellout(long long number, int i)
     char * grp_w = (char *) malloc(50 * sizeof(char));
     char * output = (char *) malloc(200 * sizeof(char));
 
-    // Initialize all output chars as NULL
+    /* Initialize all output chars as NULL */
     for (k = 0; k < 200; k++)
         output[k] = '\0';
 
